@@ -1,0 +1,7 @@
+Files: *
+Copyright: 2021 Grupo de Bioacústica física y Multisensores Distribuidos - Universidad de La Laguna
+License: LGPL-3
+
+Files: debian/*
+Copyright: 2021 Grupo de Bioacústica física y Multisensores Distribuidos - Universidad de La Laguna
+License: LGPL-3

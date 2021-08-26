@@ -1,0 +1,109 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+'''
+Script para el procesamiento de los datos proporcionados por el BMS_CAN_GUI
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+Augusto S. Hernández (ahernama@ull.edu.es) - 2021
+'''
+import bms_data_tools as tools
+import sys
+import os
+import numpy as np
+import csv
+from pathlib import Path
+import time
+import bms_data_plot_tools as plt
+
+SCRIPT_NAME = "bms_data_processing_main.py"
+
+if __name__ == '__main__':
+    FILE_PATH = os.getcwd()[0:-4] #Se obtiene la ruta raiz de la carpeta src
+
+    #Por defecto 4 termistores y 4 celdas
+    Ncell = 4
+    Ntemp = 4
+    #Si se indica el nombre del fichero csv por consola
+    if (len(sys.argv) > 1):
+        FILE_NAME = sys.argv[1]
+    if (len(sys.argv) > 2):
+        Ncell = int(sys.argv[2])
+    if (len(sys.argv) > 3):
+        Ntemp = int(sys.argv[3])
+
+    tools.write_log(SCRIPT_NAME, "Iniciando programa principal.")
+
+
+    current = np.array([])
+    voltage = np.array([])
+    v_cells = np.array([])
+    temp_cells = np.array([])
+    SOC = np.array([])
+    hour = np.array([])
+    minute = np.array([])
+    seconds = np.array([])
+
+    #Se lee el csv
+    print("Tratando de leer el fichero " + FILE_NAME)
+    with open(FILE_PATH+'/data/'+FILE_NAME, newline='') as File:
+        reader = csv.reader(File)
+        for row in reader:
+            #current =float(row[0])
+            current = np.append(current, float(row[3]))
+            voltage = np.append(voltage, float(row[7+Ncell+Ntemp]))
+            SOC = np.append(SOC, float(row[5+Ncell+Ntemp]))
+            v_cells = np.append(v_cells, (row[4:4+Ncell]))
+            temp_cells = np.append(temp_cells,(row[5+Ncell:5+Ncell+Ntemp]))
+            hour = np.append(hour, int(row[0][11:13]))
+            minute = np.append(minute, int(row[0][14:16]))
+            seconds = np.append(seconds, int(row[0][17:19]))
+            year = (row[0][6:10])
+            month = (row[0][3:5])
+            day = (row[0][0:2])
+        temp_cells = temp_cells.astype(float)
+        v_cells = v_cells.astype(float)
+
+# Bucle para generar los gráficos
+        # temperatura cada punto bateria
+        plot_name = year+month+day+"_temp"
+        plt.plot_bms_temp(FILE_PATH + '/figures/'+plot_name,temp_cells, day, month, year, hour, minute, seconds, Ntemp)
+
+        # temperatura bateria
+        plot_name = year+month+day+"_temp"
+        plt.plot_bms_all_temp(FILE_PATH + '/figures/'+plot_name,temp_cells, day, month, year, hour, minute, seconds, Ntemp)
+
+        #voltaje de celdas
+        plot_name = year+month+day+"_cellvolt.png"
+        plt.plot_bms_cell_volt(FILE_PATH + '/figures/'+plot_name,v_cells, day, month, year, hour, minute, seconds, Ncell)
+
+        #Diferencia de voltaje de las celdas maxima
+        plot_name = year+month+day+"_differencevolt.png"
+        plt.plot_bms_dif_cell_volt(FILE_PATH + '/figures/'+plot_name,v_cells, day, month, year, hour, minute, seconds, Ncell)
+
+        #Diferencia de voltaje de las celdas en porcentaje
+        plot_name = year+month+day+"_differencevoltpercent.png"
+        plt.plot_bms_dif_cell_volt_percent(FILE_PATH + '/figures/'+plot_name,v_cells, day, month, year, hour, minute, seconds, Ncell)
+
+        #Corriente consumida
+        plot_name = year+month+day+"_current.png"
+        plt.plot_bms_current(FILE_PATH + '/figures/'+plot_name,current, day, month, year, hour, minute, seconds)
+
+        #SOC
+        plot_name = year+month+day+"_soc.png"
+        plt.plot_bms_soc(FILE_PATH + '/figures/' + plot_name, SOC, day, month, year, hour, minute, seconds)
+
+        #Voltage
+        plot_name = year+month+day+"_batteryvoltage.png"
+        plt.plot_bms_voltage(FILE_PATH + '/figures/' + plot_name, voltage, day, month, year, hour, minute, seconds)

@@ -1,0 +1,88 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+'''
+Script para el procesamiento de los datos de potencia de un nodo
+
+*** Script para gestionar el servicio de usuario***
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+Iván Rodríguez (irodrigu@ull.es) - 2021
+Augusto S. Hernández (ahernama@ull.edu.es) - 2021
+'''
+import power_data_tools as tools
+from pathlib import Path
+import time
+import power_data_plot_tools as plt
+
+SCRIPT_NAME = "power_data_processing_main.py"
+
+if __name__ == '__main__':
+    tools.create_log_dir()
+    tools.write_log(SCRIPT_NAME, "Iniciando programa principal.")
+
+# Bucle para generar los gráficos
+    list_data_files = tools.list_json_files_full_path(tools.SORTDATA_PATH+"/")
+
+    for f in list_data_files:
+        fichero = f[len(tools.SORTDATA_PATH):]
+        names = fichero.split("/")
+        year = names[-4][1:]
+        month = names[-3][1:]
+        day = names[-2][1:]
+
+        # temperatura día
+        plot_name = year+month+day+"_temp.png"
+        if (tools.check_if_plot_processed(plot_name)):
+            tools.write_log(SCRIPT_NAME, "El gráfico "+plot_name+" ya estaba procesado.")
+        else:
+            tools.write_log(SCRIPT_NAME, "Procesando el gráfico "+plot_name+".")
+            tools.write_processed_plot_log(plot_name)
+            plt.plot_rpi_temp_day(tools.SORTDATA_PATH+'/A'+str(year)+'/M'+str(month)+'/D'+str(day)+'/'+plot_name,f)
+
+        #Potencia del día
+        plot_name = year+month+day+"_power.png"
+        if (tools.check_if_plot_processed(plot_name)):
+            tools.write_log(SCRIPT_NAME, "El gráfico "+plot_name+" ya estaba procesado.")
+        else:
+            tools.write_log(SCRIPT_NAME, "Procesando el gráfico "+plot_name+".")
+            tools.write_processed_plot_log(plot_name)
+            plt.plot_power_day(tools.SORTDATA_PATH+'/A'+str(year)+'/M'+str(month)+'/D'+str(day)+'/'+plot_name,f)
+
+        #Corriente del día
+        plot_name = year+month+day+"_current.png"
+        if (tools.check_if_plot_processed(plot_name)):
+            tools.write_log(SCRIPT_NAME, "El gráfico "+plot_name+" ya estaba procesado.")
+        else:
+            tools.write_log(SCRIPT_NAME, "Procesando el gráfico "+plot_name+".")
+            tools.write_processed_plot_log(plot_name)
+            plt.plot_current_day(tools.SORTDATA_PATH+'/A'+str(year)+'/M'+str(month)+'/D'+str(day)+'/'+plot_name,f)
+
+        #voltaje del día
+        plot_name = year+month+day+"_voltage.png"
+        if (tools.check_if_plot_processed(plot_name)):
+            tools.write_log(SCRIPT_NAME, "El gráfico "+plot_name+" ya estaba procesado.")
+        else:
+            tools.write_log(SCRIPT_NAME, "Procesando el gráfico "+plot_name+".")
+            tools.write_processed_plot_log(plot_name)
+            plt.plot_voltage_day(tools.SORTDATA_PATH+'/A'+str(year)+'/M'+str(month)+'/D'+str(day)+'/'+plot_name,f)
+
+        # temperatura mapa día
+        #plot_name = f[:-9]+"_"+year+month+day+"_temp_map.png"
+        #if (tools.check_if_plot_processed(plot_name)):
+            #tools.write_log(SCRIPT_NAME, "El gráfico "+plot_name+" ya estaba procesado.")
+        #else:
+            #tools.write_log(SCRIPT_NAME, "Procesando el gráfico "+plot_name+".")
+            #tools.write_processed_plot_log(plot_name)
+            #plt.map_rpi_temp_day(plot_name,f)

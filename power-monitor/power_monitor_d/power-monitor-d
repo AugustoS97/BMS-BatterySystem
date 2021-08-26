@@ -1,0 +1,59 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+'''
+Script de medición de consumos de un nodo y almacenamiento de los datos
+
+*** Script para gestionar el servicio de usuario***
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+Augusto S. Hernández (ahernama@ull.edu.es) - 2021
+'''
+import power_monitor_tools as tools
+from pathlib import Path
+import time
+
+SCRIPT_NAME = "power_monitor_main.py"
+
+if __name__ == '__main__':
+    tools.create_log_dir()
+    tools.write_log(SCRIPT_NAME, "Iniciando programa principal.")
+
+    #Habilitar I2C de la RPi y configurar ina
+
+    #tools.config_ina()
+
+    #Se obtiene la fecha y hora y la medida de potencia
+    date_lst = tools.get_date_as_list()
+    date_str = tools.date_as_string()
+    power_measure = tools.read_ina()
+
+    #Se obtiene la medida de Temperatura
+    temperature_measure = tools.get_temperatures()
+
+    #Se obtiene el uso del CPU
+    cpu_load = tools.get_cpuload()
+
+    #Se pntiene el uso de la RAM (en %)
+    ram_load = tools.get_ramload()
+
+    #Se verifica si exite el directorio
+    year = date_lst[2]
+    month = date_lst[1]
+    day = date_lst[0]
+    tools.check_fs_path(tools.ROOT_PATH, year, month, day)
+
+    #Se almacenan los valores medidos en un Json
+    filename = tools.date_as_string() + "_power" #Se nombrará con fecha_power
+    tools.data_to_json(power_measure, temperature_measure, date_lst, cpu_load, ram_load, tools.ROOT_PATH+'/data/A'+year+"/M"+month+"/D"+day+"/"+filename+".json")
