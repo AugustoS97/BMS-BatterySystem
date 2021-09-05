@@ -58,4 +58,4 @@ Se eliminan todos los ficheros salvo la ruta '/usr/share/power-data/data' que de
     $ systemctl daemon-reload
 
 ## Licencia
-- El paquete: [LGPLv3](LICENSE) © 2021 Grupo de Bioacústica Física y multiSensores Distribuidos - Universidad de La Laguna
+- El paquete: [GPLv3](LICENSE) © 2021 Augusto Samuel Hernández Martín - Universidad de La Laguna
