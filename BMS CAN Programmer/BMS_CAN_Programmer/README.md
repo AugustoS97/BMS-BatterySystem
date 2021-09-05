@@ -1,5 +1,9 @@
 # BMS_CAN_programer
 Firmware del nodo que recibe los datos del CANBUS y comunica con el PC por Serial y configura el BMS por CAN envíando los parámetros transmitidos desde el PC por Serial.
+
+# Licencia
+- El paquete: [GPLv3](LICENSE) © 2021 Augusto Samuel Hernández Martín - Universidad de La Laguna
+
 # Mensajes a Enviar por puerto Serial
 Para realizar la comunicación con el CAN debe Enviarse un mensaje por serial, configurado a 115200 baudios, formado por:
 
