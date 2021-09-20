@@ -1,6 +1,8 @@
 # BMS-data-processing
-
 Script de python 3 para ejecutar desde terminal. Permite generar las gráficas de los datos recogidos por el servicio del sistema 'power-monitor'. La carpeta 'power-data' debe localizar en '/home/$USER/power-data'. El código fuente se localiza en '/src', los logs de procesamiento en '/logs' y los datos en '/data'.
+
+# Licencia
+- El paquete: [GPLv3](LICENSE) © 2021 Augusto Samuel Hernández Martín - Universidad de La Laguna
 
 # Estructra de ficheros
 El conjunto de ficheros deben de localizarse de la siguiente forma:

@@ -6,6 +6,9 @@ sistema usando el integrado INA-219 (https://pypi.org/project/pi-ina219/) y la c
 El servicio del sistema se ejecuta cada 5 minutos y almacena en un fichero .json los
 datos capturados del día correspondiente, ordenados en directorios.
 
+# Licencia
+- El paquete: [GPLv3](LICENSE) © 2021 Augusto Samuel Hernández Martín - Universidad de La Laguna
+
 ## Requerimientos
 Requiere el módulo de Python INA219.
 

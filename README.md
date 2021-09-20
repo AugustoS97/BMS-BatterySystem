@@ -1,6 +1,9 @@
 # BMS-BatterySystem
 Repositorio con el diseño de un BMS y una batería como TFM.
 
+# Licencia
+- El paquete: [GPLv3](LICENSE) © 2021 Augusto Samuel Hernández Martín - Universidad de La Laguna
+
 # Sistema diseñado
 
 El diagrama de bloques del sistema de alimentación y la batería es el siguiente:

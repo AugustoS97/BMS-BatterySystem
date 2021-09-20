@@ -3,6 +3,9 @@ Firmware del nodo BMS que monitoriza la tensión, la temperatura de las celdas, 
 y realiza el balanceo de las celdas, cuando la diferencia entre celdas supera un valor establecido.
 Transmite los parámetros medidos por CANBUS y puede ser configurado mediante CANBUS.
 
+# Licencia
+- El paquete: [GPLv3](LICENSE) © 2021 Augusto Samuel Hernández Martín - Universidad de La Laguna
+
 # Mensajes CAN
 A continuación se indican los mensajes CAN que son intercambiados entre el nodo BMS y el resto de nodos.
 
