@@ -1,4 +1,0 @@
-#!/bin/bash
-
-power-monitor-d /usr/share/power-data/src
-power_monitor_tools.py /usr/share/power-data/src

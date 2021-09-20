@@ -1,0 +1,82 @@
+
+(rules PCB EPSolar-CAN
+  (snap_angle 
+    fortyfive_degree
+  )
+  (autoroute_settings
+    (fanout off)
+    (autoroute on)
+    (postroute on)
+    (vias on)
+    (via_costs 50)
+    (plane_via_costs 5)
+    (start_ripup_costs 100)
+    (start_pass_no 3316)
+    (layer_rule F.Cu
+      (active on)
+      (preferred_direction horizontal)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 2.4)
+    )
+    (layer_rule B.Cu
+      (active on)
+      (preferred_direction vertical)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 1.7)
+    )
+  )
+  (rule
+    (width 400.0)
+    (clear 300.2)
+    (clear 200.0 (type smd_to_turn_gap))
+    (clear 75.0 (type smd_smd))
+  )
+  (padstack "Via[0-1]_1600:800_um"
+    (shape
+      (circle F.Cu 1600.0 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 1600.0 0.0 0.0)
+    )
+    (attach off)
+  )
+  (via 
+    "Via[0-1]_1600:800_um" "Via[0-1]_1600:800_um" default
+  )
+  (via 
+    "Via[0-1]_1600:800_um-kicad_default" "Via[0-1]_1600:800_um" "kicad_default"
+  )
+  (via_rule
+    default "Via[0-1]_1600:800_um"
+  )
+  (via_rule
+    "kicad_default" "Via[0-1]_1600:800_um-kicad_default"
+  )
+  (class default
+    (clearance_class default)
+    (via_rule default)
+    (rule
+      (width 400.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class "kicad_default"
+    GND +5V "Net-(C3-Pad2)" "Net-(C4-Pad2)" "Net-(C5-Pad2)" "Net-(C6-Pad2)" /RESET /MOSI
+    /SCK /MISO CANH CANL "TX_TTL" "RX_TTL" "Net-(R2-Pad2)" "Net-(R3-Pad2)"
+    "/SS_MCP" "MCP_INT" "Net-(U2-Pad11)" "Net-(U2-Pad10)" "Net-(U2-Pad6)" "Net-(U2-Pad5)" "Net-(U2-Pad4)" "Net-(U2-Pad3)"
+    RXCAN TXCAN "Net-(U1-Pad28)" "Net-(U1-Pad27)" "Net-(U1-Pad26)" "Net-(U1-Pad25)" "Net-(U1-Pad23)" "Net-(U1-Pad22)"
+    "Net-(U1-Pad19)" "Net-(U1-Pad14)" "Net-(U1-Pad12)" "Net-(U1-Pad11)" "Net-(D1-Pad2)" "5V-PreFuse" +12V "GND-EPSOLAR"
+    A B "5V-EPSOLAR" "Net-(JP1-Pad2)" "5V-MP2307" "Net-(R5-Pad2)" "RO-485" "RE-485"
+    "DE-485" "DI-485" "Net-(U1-Pad24)" "Net-(U3-Pad5)"
+    (clearance_class "kicad_default")
+    (via_rule kicad_default)
+    (rule
+      (width 400.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+)

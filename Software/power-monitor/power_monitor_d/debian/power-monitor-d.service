@@ -1,0 +1,11 @@
+[Unit]
+Description= Power data capturer for smart nodes (power_monitor service)
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 /usr/share/power-data/src/power-monitor-d
+#ExecStop=/bin/kill -SIGINT ${MAINPID}
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=default.target

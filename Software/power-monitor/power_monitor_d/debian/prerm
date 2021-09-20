@@ -1,0 +1,70 @@
+#!/bin/bash
+
+# Comprobamos si el directorio raíz se ha quedado con caché
+DIR="/usr/share/power-data/src"
+if [ -d "$DIR" ]; then
+    echo "[prerm] Found caché files into $DIR, removing ..."
+    rm  -r "$DIR"
+    echo "[prerm] Removed!"
+fi
+
+# Borramos el enlace simbólico
+echo "Checking if there is a previous version of the symbolic link installed..."
+SYMLINK=/usr/share/power-data/src
+if [ -L ${SYMLINK} ] ; then
+   if [ -e ${SYMLINK} ] ; then
+      echo "[prerm] Good link installed, removing..."
+      rm -r "$SYMLINK"
+      echo "[prerm] Removed"
+   else
+      echo "[prerm] Broken link, removing..."
+      rm -r "$SYMLINK"
+      echo "[prerm] Removed"
+   fi
+elif [ -e ${SYMLINK} ] ; then
+   echo "[prerm] Not a link, removing..."
+   rm -r "$SYMLINK"
+   echo "[prerm] Removed"
+else
+   echo "[prerm] Missing"
+fi
+
+# Borramos los servicios
+echo "Checking if there is a previous version of systemd service..."
+SYMLINK=/lib/systemd/system/power-monitor-d.service
+if [ -L ${SYMLINK} ] ; then
+   if [ -e ${SYMLINK} ] ; then
+      echo "[prerm] Good link installed, removing..."
+      rm -r "$SYMLINK"
+      echo "[prerm] Removed"
+   else
+      echo "[prerm] Broken link, removing..."
+      rm -r "$SYMLINK"
+      echo "[prerm] Removed"
+   fi
+elif [ -e ${SYMLINK} ] ; then
+   echo "[prerm] Not a link, removing..."
+   rm -r "$SYMLINK"
+   echo "[prerm] Removed"
+else
+   echo "[prerm] Missing"
+fi
+
+SYMLINK=/lib/systemd/system/power-monitor-d.timer
+if [ -L ${SYMLINK} ] ; then
+   if [ -e ${SYMLINK} ] ; then
+      echo "[prerm] Good link installed, removing..."
+      rm -r "$SYMLINK"
+      echo "[prerm] Removed"
+   else
+      echo "[prerm] Broken link, removing..."
+      rm -r "$SYMLINK"
+      echo "[prerm] Removed"
+   fi
+elif [ -e ${SYMLINK} ] ; then
+   echo "[prerm] Not a link, removing..."
+   rm -r "$SYMLINK"
+   echo "[prerm] Removed"
+else
+   echo "[prerm] Missing"
+fi

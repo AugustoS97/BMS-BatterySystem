@@ -1,0 +1,51 @@
+{
+  "Header":
+  {
+    "GenerationSoftware":
+    {
+      "Vendor":      "KiCad",
+      "Application": "Pcbnew",
+      "Version":     "5.1.5+dfsg1-2build2"
+    },
+    "CreationDate":  "2021-07-27T09:38:27+01:00"
+  },
+  "GeneralSpecs":
+  {
+    "ProjectId":
+    {
+      "Name": "CAN2Serial",
+      "GUID": "43414e32-5365-4726-9961-6c2e6b696361",
+      "Revision": "rev?"
+    },
+    "Size":
+    {
+      "X": 67.360,
+      "Y": 52.120
+    },
+    "LayerNumber": 2,
+    "BoardThickness":  1.600
+  },
+  "DesignRules":
+  [
+    {
+      "Layers": "Outer",
+      "PadToPad":  0.300,
+      "PadToTrack":  0.300,
+      "TrackToTrack":  0.300,
+      "MinLineWidth":  0.300,
+      "TrackToRegion":  0.508,
+      "RegionToRegion":  0.508
+    }
+  ],
+  "FilesAttributes":
+  [
+    {
+      "Path":  "CAN2Serial-Edge_Cuts.gbr",
+      "FileFunction":  "Profile",
+      "FilePolarity":  "Positive"
+    }
+  ],
+  "MaterialStackup":
+  [
+  ]
+}
