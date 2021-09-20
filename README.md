@@ -3,6 +3,8 @@ Repositorio con el diseño de un BMS y una batería como TFM.
 
 # Sistema diseñado
 
+![Diagrama de bloques del Sistema]
+(https://github.com/AugustoS97/BMS-BatterySystem-TFM/blob/main/img/Diagrama_Bloques_alimentacion.png?raw=true)
 
 
 # Contenido del repositorio
