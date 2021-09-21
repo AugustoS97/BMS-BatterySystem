@@ -16,6 +16,11 @@ El presente Trabajo Fin de Máster consiste en el diseñado y fabricación de un
 
 In the present Master’s Degree Final Project, a Battery Management System (BMS) has been designed and manufactured, as well as a modular battery configurable at different voltages and capacities, with the aim of being able to power isolated electronic systems such as devices for capturing eco-acoustic significance indexes. The electronic design of the different modules that make up the power supply and management system has been carried out, as well as the calculation and design of the battery based on lithium-ion cells and its mechanical structure. In order to be able to supply this system, a possible generating installation has been dimensioned, using photovoltaic energy. Finally, the manufacture of the different elements, both mechanical and electronic, and the software development of the different tools necessary for the configuration of the BMS and the capture and analysis of the data generated have been carried out. Finally, different applications have been proposed and analysed, in addition to the one mentioned as the main objective of the project, for this BMS and accumulator system.
 
+# Imágenes del sistema desarrollado
+![BMS](https://github.com/AugustoS97/BMS-BatterySystem/blob/main/img/montaje_bateria.jpg?raw=true)
+
+![Bateria](https://github.com/AugustoS97/BMS-BatterySystem/blob/main/img/montaje_bateria_2.jpg?raw=true)
+
 # Sistema diseñado
 
 El diagrama de bloques del sistema de alimentación y la batería es el siguiente:
