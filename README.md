@@ -1,8 +1,20 @@
 # BMS-BatterySystem
-Repositorio con el diseño de un BMS y una batería como TFM.
+Repositorio con el diseño de un BMS y una batería como Trabajo de Fin de Máster.
+- Autor: Augusto Samuel Hernández Martín
+- Tutor: Fernando Luis Rosa González
+- Co-Tutor: Iván Rodríguez Méndez
+- Titulación: Máster en Ingeniería Industrial
+- Universidad de La Laguna, 2021
 
 # Licencia
 - El paquete: [GPLv3](LICENSE) © 2021 Augusto Samuel Hernández Martín - Universidad de La Laguna
+
+# Resumen 
+El presente Trabajo Fin de Máster consiste en el diseñado y fabricación de un Sistema de Gestión de Batería (BMS), así como una batería modular configurable a diferentes tensiones y capacidades, con el objetivo de poder alimentar sistemas electrónicos aislados como los dispositivos de capturas de índices de significación eco-acústicos. Se ha llevado a cabo el diseño electrónico de los diferentes módulos que forman el sistema de alimentación y gestión así como el cálculo y diseño de la batería a partir de celdas de ion-litio y su estructura mecánica. Para poder alimentar dicho sistema se ha dimensionado una posible instalación generadora, empleando energía fotovoltaica. Finalmente, se ha realizado la fabricación de los distintos elementos, tanto mecánicos como electrónicos, y el desarrollo software de las diferentes herramientas necesarias para la configuración del BMS, la captura y el análisis de los datos generados. Por último, se han propuesto y analizado diferentes aplicaciones, además de la mencionada como objetivo principal del proyecto, para este sistema de BMS y acumulador.
+
+# Abstract
+
+In the present Master’s Degree Final Project, a Battery Management System (BMS) has been designed and manufactured, as well as a modular battery configurable at different voltages and capacities, with the aim of being able to power isolated electronic systems such as devices for capturing eco-acoustic significance indexes. The electronic design of the different modules that make up the power supply and management system has been carried out, as well as the calculation and design of the battery based on lithium-ion cells and its mechanical structure. In order to be able to supply this system, a possible generating installation has been dimensioned, using photovoltaic energy. Finally, the manufacture of the different elements, both mechanical and electronic, and the software development of the different tools necessary for the configuration of the BMS and the capture and analysis of the data generated have been carried out. Finally, different applications have been proposed and analysed, in addition to the one mentioned as the main objective of the project, for this BMS and accumulator system.
 
 # Sistema diseñado
 
